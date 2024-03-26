@@ -7,12 +7,12 @@ const storageConfig = multer.diskStorage({
         cb(null,'public/images/')
     },
     filename:(req,file,cb)=>{
-        const name = Date.now()+"_"+file.originalname
+        const name = Date.now() + "_" + file.originalname
         cb(null,name);
     }
 });
 
 
-export const uploadFile = multer({Storage:storageConfig});
+export const uploadFile = multer({storage:storageConfig});
 
 

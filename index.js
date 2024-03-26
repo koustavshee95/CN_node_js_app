@@ -27,7 +27,7 @@ server.get('/add-product',productController.getAddProduct);
 server.get('/update_product/:id',productController.getUpdateProductView);
 server.post('/delete_product/:id',productController.deleteProduct);
 
-server.post("/", middlewareValidation,uploadFile.single('imageUrl'), productController.postAddProduct);
+server.post("/",uploadFile.single('imageUrl'), middlewareValidation, productController.postAddProduct);
 server.post('/update-product',productController.postUpdateProduct); 
 
 

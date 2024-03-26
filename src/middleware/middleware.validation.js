@@ -19,7 +19,13 @@ const  validateRequest = async(req,res,next)=>{
     const rules = [
         body('name').notEmpty().withMessage("name is reqired."),
         body('price').isFloat({gt:0}).withMessage("The price should be positive Value and not empty"),
-        body('imageUrl').isURL().withMessage("Invalid Url"),
+        
+         body('imageUrl').custom((Value,{req})=>{
+            if (!req.file) {
+                throw new Error("Image is required.")
+            }; 
+            return true;
+         })
     ];
 
     //2.Run those rules.

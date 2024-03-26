@@ -22,14 +22,14 @@ export default class ProductModel {
         products.splice(index,1);
     }
 
-    static add(productObj){
+    static add(name,desc,price,imageUrl){
         let newProduct = new ProductModel(products.length+1,
-            productObj.name,
-            productObj.desc,
-            productObj.price,
-            productObj.imageUrl);
+            name,
+            desc,
+            price,
+            imageUrl);
             
-        products.push(newProduct)
+        products.push(newProduct);
     }
 
     static getById(id){

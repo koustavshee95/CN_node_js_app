@@ -6,20 +6,16 @@ export default class ProductController{
         let products = ProductModel.get();
         console.log(products);
         res.render("products",{products:products});
-
-
-       // return res.sendFile(path.join(path.resolve(),"src","views","products.html"))
     }
 
     getAddProduct(req,res){                            //no arrow function for method.
        return res.render("new_product",{errorMessage:null})
     }
 
-    postAddProduct(req,res){
-        
-        //access data from form.
-        console.log(req.body);
-        ProductModel.add(req.body)
+    postAddProduct(req,res,next){
+        const {name,desc,price}=req.body;
+        const imageUrl = 'images/'+ req.file.filename;
+        ProductModel.add(name,desc,price,imageUrl);
          let products = ProductModel.get();
        return res.render("products",{products}); 
     }
